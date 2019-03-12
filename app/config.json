@@ -1,0 +1,21 @@
+{
+  "name": "medicionCombustibleGrExpo",
+  "supportEmail": "",
+  "version": "0.0.1",
+  "items": [{
+    
+    "url": "medicionCombustibleGrExpo.html",
+    "path": "",
+    "menuName": {
+      "en": "medicionCombustibleGrExpo"
+    },
+    
+    "icon": "images/icon.svg"
+  }],
+  "dev": {
+    "root": "medicionCombustibleGrExpo",
+    "dist": {
+      "host": "https://www.example.com/myaddin/"
+    }
+  }
+}

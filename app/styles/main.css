@@ -1,0 +1,210 @@
+.hidden {
+    display: none;
+}
+
+
+.tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#myInput {
+    background-image: url('../img/search.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 12px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myTable {
+    border-collapse: collapse;
+    width: 95%;
+    border: 1px solid #e2e3e4;
+    font-size: 12px;
+    text-align: center;
+}
+
+#myTable th,
+#myTable td {
+    /*text-align: left;*/
+    padding: 12px;
+}
+
+#myTable tr {
+    border-bottom: 1px solid #1565c047;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+    background-color: #1565c061;
+}
+
+/*inicio*/
+#myInputInicio {
+    background-image: url('../img/search.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 12px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myTableInicio {
+    border-collapse: collapse;
+    width: 95%;
+    border: 1px solid #e2e3e4;
+    font-size: 12px;
+    text-align: center;
+}
+
+#myTableInicio th,
+#myTableInicio td {
+    /*text-align: left;*/
+    padding: 12px;
+}
+
+#myTableInicio tr {
+    border-bottom: 1px solid #1565c047;
+}
+
+#myTableInicio tr.header,
+#myTableInicio tr:hover {
+    background-color: #f1f1f1;
+}
+
+#myTableInicio tr.header,
+#myTableInicio tr:hover {
+    background-color: #1565c061;
+}
+
+/*datepicker*/
+.dtp>.dtp-content>.dtp-date-view>header.dtp-header {
+    background: #103148;
+    color: #fff;
+    text-align: center;
+}
+
+.dtp div.dtp-date,
+.dtp div.dtp-time {
+    background: #073352;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+
+.dtp table.dtp-picker-days tr>td>a.selected.hilite {
+    padding: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: #4a80c3;
+    color: #fff;
+}
+
+.dtp .dtp-picker-time>a.dtp-select-hour.selected {
+    background: #38799f;
+    color: #fff;
+}
+
+.dtp .dtp-hand.on {
+    background: #4a9cc3;
+}
+
+.dtp div.dtp-actual-time.p60 span.selected {
+    color: #08141b;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.caja {
+    margin: 20px auto 40px auto;
+    border: 1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 230px;
+    position: relative;
+}
+
+select {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    padding: 5px;
+    width: 250px;
+}
+
+select:focus {
+    outline: none;
+}
+
+.caja::after {
+    content: "\025be";
+    display: table-cell;
+    padding-top: 7px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    pointer-events: none;
+}
+
+md-tabs.md-default-theme .md-tab.md-active,
+md-tabs .md-tab.md-active,
+md-tabs.md-default-theme .md-tab.md-active md-icon,
+md-tabs .md-tab.md-active md-icon,
+md-tabs.md-default-theme .md-tab.md-focused,
+md-tabs .md-tab.md-focused,
+md-tabs.md-default-theme .md-tab.md-focused md-icon,
+md-tabs .md-tab.md-focused md-icon {
+    color: #25477b;
+}
+
+md-tabs.md-default-theme md-ink-bar,
+md-tabs md-ink-bar {
+    color: rgb(255, 64, 129);
+    background: rgba(255, 64, 129, 0.55);
+}
+
+.md-button.md-default-theme.md-primary.md-fab,
+.md-button.md-primary.md-fab,
+.md-button.md-default-theme.md-primary.md-raised,
+.md-button.md-primary.md-raised {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #1565C0;
+    font-size: 12px;
+}
+
+.md-tab {
+    font-size: 15px;
+    text-align: center;
+    line-height: 24px;
+    padding: 12px 24px;
+    transition: background-color .35s cubic-bezier(.35, 0, .25, 1);
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    text-transform: uppercase;
+    float: left;
+    font-weight: 500;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dtp table.dtp-picker-days tr>td>a.selected {
+    background: #264f63;
+    color: #fff;
+}

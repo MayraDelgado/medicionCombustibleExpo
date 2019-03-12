@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>medicionCombustibleGrExpo</title>
+
+
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
+  <script src="../bower_components/angular/angular.min.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+  <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="../bower_components/angular-material/angular-material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <script src="/bower_components/moment/min/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+  <script src="../bower_components/ng-material-datetimepicker/dist/angular-material-datetimepicker.min.js"></script>
+  <link href="../bower_components/ng-material-datetimepicker/dist/material-datetimepicker.min.css" rel="stylesheet"
+    type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../bower_components/jquery-table2excel/src/jquery.table2excel.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+  <script type="text/javascript" src="../bower_components/file-saverjs/FileSaver.js"></script>
+  <script type="text/javascript" src="../bower_components/tableexport.js/dist/js/tableexport.js"></script>
+  <script type="text/javascript" src="../bower_components/js-xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <script src="scripts/datosController.js"></script>
+  <!-- endbuild -->
+
+</head>
+
+<body>
+
+  <div id="medicionCombustibleGrExpo" class="hidden">
+
+    <!--header class="geotabPageHeader">
+      <h1 class="geotabPageName">medicionCombustibleGrExpo <span class="subdued">sub title</span></h1>
+      <div class="pageNameSecondary">
+        <h3 class="geotabSecondaryTitle">by: <span id="medicionCombustibleGrExpo-user"></span></h3>
+      </div>
+    </header-->
+    <div ng-controller="DatosController">
+      <center>
+        <h1 class="md-display-1" layout-align="center center"> Medición de combustible<i class="md-caption">Beta</i></h1>
+      </center>
+      <div ng-cloak>
+        <md-content>
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="one">
+              <md-tab-label>
+                <i class="material-icons">
+                  dashboard
+                </i> Dashboard
+              </md-tab-label>
+              <md-tab-body>
+                <br><br>
+                <div layout="row">
+                  <div flex="66" flex-offset="15">
+                    <input type="text" id="myInputInicio" ng-keyup="myFunctionInicio()" placeholder="Buscar por unidad..."
+                      title="Type in a name">
+                  </div>
+                  <div flex>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <center>
+                      <md-button class="md-raised md-primary" ng-click="xslInicio()">
+                        <md-icon md-svg-icon="./img/iconExport.svg"></md-icon>
+                      </md-button>
+                    </center>
+                  </div>
+                </div>
+                <br>
+                <center>
+                  <table id="myTableInicio">
+                    <tr class="header">
+                      <th class="text-input">Unidad</th>
+                      <th>Ultimo registro</th>
+                      <th>Tanque 1(lt)</th>
+                      <th>Tanque 2(lt)</th>
+                      <th>Tanque 3(lt)</th>
+                      <th>Tanque 4(lt)</th>
+                      <th>Total (lt)</th>
+                      <th>Coordenadas</th>
+                      <th>Mapa</th>
+                    </tr>
+                    <tr ng-repeat="dispositivo in lstDatosInicio track by $index">
+                      <td>{{dispositivo.uniEconomico}}</td>
+                      <td>{{dispositivo.evlFechaAnalog | date : "YYYY-MM-DD HH:mm:ss"}}</td>
+                      <td>{{dispositivo.tanCapacidad1}}</td>
+                      <td>{{dispositivo.tanCapacidad2}}</td>
+                      <td>{{dispositivo.tanCapacidad3}}</td>
+                      <td>{{dispositivo.tanCapacidad4}}</td>
+                      <td>{{dispositivo.tanCapacidad}}</td>
+                      <td>{{dispositivo.evlLatitud +","+ dispositivo.evlLongitud}}</td>
+                      <td><a href="https://www.google.com/maps/search/?api=1&query={{dispositivo.evlLatitud + ','+ dispositivo.evlLongitud}}"
+                          target="_blank"><i class="material-icons">
+                            streetview
+                          </i></a></td>
+                    </tr>
+
+                  </table>
+                </center>
+              </md-tab-body>
+            </md-tab>
+            <md-tab label="two">
+              <md-tab-label>
+                <i class="material-icons">
+                  local_gas_station
+                </i> cargas y descargas
+              </md-tab-label>
+              <md-tab-body>
+                <br><br>
+                <div layout="row" layout-wrap>
+                  <div flex="30" flex-offset="5">
+                    <div layout="row ">
+                      <md-input-container flex="80">
+                        <small class="md-caption ">
+                          <md-tooltip md-direction="top" md-visible="tooltipVisible">Doble clic en la pantalla para
+                            cerrar lista de vehículos</md-tooltip>
+                          <md-select multiple id="select" name="field " ng-model="dispositivoSeleccionado
+                                "
+                            placeholder="Buscar Vehículos... " data-md-container-class="selectdemoSelectHeader "
+                            ng-init="showOptions = true" my-on-focus="showOptions" md-on-close="showOptions=false">
+                            <md-select-header layout="column " class="demo-select-header " id="divFechas ">
+                              <md-input-container>
+                                <input id="select2" ng-model="busqueda " type="search " ng-model-options="{debounce: { 'default': 1000,
+                                'blur': 0}} "
+                                  placeholder="Buscar Vehículos... " class="demo-header-searchbox md-text " ng-keydown="updateSearch($event) " />
+                              </md-input-container>
+                            </md-select-header>
+                            <md-option ng-repeat="dispositivo in lstDeviceGeotab | filter: busqueda " ng-value="{{dispositivo}} ">{{dispositivo.name}}</md-option>
+                          </md-select>
+                          <div ng-messages="form.field.$error ">
+                          </div>
+                        </small>
+                      </md-input-container>
+                    </div>
+
+                  </div>
+                  <div flex="25">
+                    <div layout="row ">
+                      <md-input-container flex-gt-md="50"><br>
+                        <label>Del:</label>
+                        <input mdc-datetime-picker="" date="true" time="true" minutes="true" seconds="true" type="text"
+                          id="datetimesecondStartDevice" show-todays-date="" min-date="date" ng-model="Data.start"
+                          format="YYYY-MM-DD HH:mm:ss" class=" md-input">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div flex="25">
+                    <md-input-container flex-gt-md="50">
+                      <br>
+                      <label>Al:</label>
+                      <input mdc-datetime-picker="" date="true" time="true" minutes="true" seconds="true" type="text"
+                        id="datetimesecondEndDevice" show-todays-date="" min-date="date" ng-model="Data.end" format="YYYY-MM-DD HH:mm:ss"
+                        class=" md-input">
+                    </md-input-container>
+                  </div>
+                  <div flex="15"><br>
+                    <md-button class="md-raised md-primary" ng-click="datosObtenercargasDescargas()">Consultar</md-button>
+                  </div>
+                </div>
+                <div layout="row">
+                  <div flex="30" flex-offset="5">
+                    <input type="text" id="myInput" ng-keyup="myFunction()" placeholder="Buscar por unidad..." title="Type in a name">
+                  </div>
+                  <div flex>
+                    <md-button class="md-raised md-primary" ng-click="xlsCargas()">
+                      <md-icon md-svg-icon="./img/iconExport.svg"></md-icon>
+                    </md-button>
+                  </div>
+                </div>
+                <center>
+                  <table id="myTable">
+                    <tr class="header">
+                      <th class="text-input">Unidad</th>
+                      <th>Tipo de evento</th>
+                      <th>Litros por evento</th>
+                      <th>Ultimo registro</th>
+                      <th>Coordenadas</th>
+                      <th>mapa</th>
+                    </tr>
+                    <tr ng-repeat="evento in lstDatosCragasDescargas track by $index">
+                      <td>{{evento.uniEconomico}}</td>
+                      <td>{{evento.TipoEvento}}</td>
+                      <td>{{evento.LitrosEvento}}</td>
+                      <td>{{evento.dtFechaFin}}</td>
+                      <td>{{evento.evlLatitud + "," + evento.evlLongitud}}</td>
+                      <td><a href="https://www.google.com/maps/search/?api=1&query={{evento.evlLatitud + ','+ evento.evlLongitud}}"
+                          target="_blank"><i class="material-icons">
+                            streetview
+                          </i></a></td>
+                    </tr>
+                  </table>
+                </center>
+
+              </md-tab-body>
+            </md-tab>
+            <md-tab label="three" ng-disabled="true">
+              <md-tab-label>
+                <i class="material-icons">
+                  insert_chart_outlined
+                </i> ver grafico
+              </md-tab-label>
+              <md-tab-body>
+                View for Item #4 <br />
+                data.selectedIndex = 3;
+              </md-tab-body>
+            </md-tab>
+            <md-tab label="cuatro" ng-disabled="true">
+              <md-tab-label>
+                <i class="material-icons">
+                  notes
+                </i> perfiles
+              </md-tab-label>
+              <md-tab-body>
+                View for Item #4 <br />
+                data.selectedIndex = 3;
+              </md-tab-body>
+            </md-tab>
+            <md-tab label="cinco" ng-disabled="true">
+              <md-tab-label>
+                <i class="material-icons">
+                  build
+                </i> configuraciones
+              </md-tab-label>
+              <md-tab-body>
+                View for Item #4 <br />
+                data.selectedIndex = 3;
+              </md-tab-body>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
