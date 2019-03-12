@@ -1,7 +1,12 @@
 .hidden {
     display: none;
 }
-
+.centerPane {
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 10;
+}
 
 .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0;
