@@ -1,12 +1,6 @@
 .hidden {
     display: none;
 }
-.centerPane {
-    position: absolute;
-    overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 10;
-}
 
 .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0;
@@ -212,4 +206,14 @@ md-tabs md-ink-bar {
 .dtp table.dtp-picker-days tr>td>a.selected {
     background: #264f63;
     color: #fff;
+}
+.md-select-menu-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100000000;
+    opacity: 0;
+    display: none;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
 }
