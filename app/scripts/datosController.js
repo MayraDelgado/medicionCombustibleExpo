@@ -5,8 +5,8 @@ var angularObj = {
     initAngular: function initAngular(api, freshState) {
         angularObj.app = angular.module('myAplicacion', ['ngMaterial', 'ngMaterialDatePicker']);
         angularObj.app.controller('DatosController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
-
-            var baseDatos = "metrica";
+            //antes "metrica" para prueba
+            var baseDatos = "GR";
             //var device = "bA"
             $scope.lstDatosInicio = [];
 
